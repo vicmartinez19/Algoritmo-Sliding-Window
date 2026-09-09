@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 5 - Algoritmo Sliding Window</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+    h1 { color: var(--primary-dark); margin-top: 0; }
+    .badge {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    .console-box {
+      background: #0f172a;
+      color: #38bdf8;
+      font-family: 'Consolas', monospace;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      margin-top: 1.5rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-family: inherit;
+    }
+    button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: var(--primary-dark); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <span class="badge">Actividad 5 • Sliding Window</span>
+    <h1>🔍 Encontrar la Palabra Más Larga</h1>
+    <textarea id="txtInput" rows="3">JavaScript es un lenguaje de programación increíble para aprender.</textarea>
+    <button id="btnEjecutar">Analizar Texto con Sliding Window</button>
+    <div class="console-box" id="output">Esperando análisis...</div>
+  </div>
+
+  <script type="module">
+    import { findLongestWord, findLongestWordDetails } from './slidingWindow.js';
+
+    const txtInput = document.getElementById('txtInput');
+    const output = document.getElementById('output');
+    const btn = document.getElementById('btnEjecutar');
+
+    btn.addEventListener('click', () => {
+      const text = txtInput.value;
+      const palabra = findLongestWord(text);
+      const detalles = findLongestWordDetails(text);
+
+      output.textContent = 
+        `Texto analizado:\n"${text}"\n\n` +
+        `-> Palabra más larga: "${palabra}"\n` +
+        `-> Longitud: ${detalles.longitud} caracteres\n` +
+        `-> Posición en el texto: palabra #${detalles.posicion} de ${detalles.totalPalabras}`;
+    });
+
+    btn.click();
+  </script>
+</body>
+</html>
