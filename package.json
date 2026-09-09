@@ -1,0 +1,10 @@
+{
+  "name": "actividad-5-sliding-window",
+  "version": "1.0.0",
+  "description": "Algoritmo Sliding Window para encontrar la palabra mas larga",
+  "type": "module",
+  "main": "slidingWindow.js",
+  "scripts": {
+    "start": "node slidingWindow.js"
+  }
+}
